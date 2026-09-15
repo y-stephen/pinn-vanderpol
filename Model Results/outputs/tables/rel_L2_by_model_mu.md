@@ -1,0 +1,13 @@
+# Relative L2 Error by model and mu
+
+Values are the median, min–max range across seeds for models with more than one run per mu (Adaptive Window PINN, Adaptive SIREN PINN, Adaptive Fourier Feature PINN); all other models are single-seed.
+
+| model                         |       0.1 |       1.0 |       5.0 |      10.0 |       20.0 |       30.0 |      40.0 |     50.0 |
+|:------------------------------|----------:|----------:|----------:|----------:|-----------:|-----------:|----------:|---------:|
+| Original PINN                 | 1.007e-05 | 1.691e-05 | 0.2488    | 1.081     | nan        | nan        | nan       | nan      |
+| Window PINN                   | 4.22e-05  | 6.516e-05 | 6.718e-05 | 0.9519    | nan        | nan        | nan       | nan      |
+| SIREN PINN                    | 3.63e-05  | 1.396e-05 | 0.0001494 | 0.5388    | nan        | nan        | nan       | nan      |
+| Fourier Feature PINN          | 4.118e-05 | 1.125e-05 | 0.0001716 | 0.4889    | nan        | nan        | nan       | nan      |
+| Adaptive Window PINN          | 2.506e-05 | 1.383e-05 | 9.444e-05 | 0.0008454 |   0.004517 |   0.003868 |   0.01599 |   0.7776 |
+| Adaptive SIREN PINN           | 2.526e-05 | 2.311e-05 | 0.0001143 | 0.002884  |   0.1227   |   1.055    |   1.615   |   1.498  |
+| Adaptive Fourier Feature PINN | 2.791e-05 | 2.535e-05 | 0.0001105 | 0.00118   |   0.0094   |   1.669    |   1.319   |   1.625  |
