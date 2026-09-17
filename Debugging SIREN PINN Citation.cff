@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the associated paper."
+title: "Evaluating Physics-Informed Neural Network Variants for Nonlinear Dynamical Systems: A Multi-Seed Reliability Study of the Van der Pol Oscillator"
+type: software
+repository-code: "https://github.com/y-stephen/pinn-vanderpol"
+license: MIT
+authors:
+  - given-names: Akshar
+    family-names: Parmar
+    email: aksharnp2020@gmail.com
+    affiliation: North Creek High School
+  - given-names: Alvin
+    family-names: Hu
+    email: alvinhu8@gmail.com
+    affiliation: Stuyvesant High School
+  - given-names: Anthony
+    family-names: Lai
+    email: lai.a640947@gmail.com
+    affiliation: Fountain Valley High School
+  - given-names: Eshan
+    family-names: Tangutur
+    email: eshantangutur@gmail.com
+    affiliation: Chantilly High School
+  - given-names: Fatima
+    family-names: Sotelo Huerta
+    email: hsotelofatima@gmail.com
+    affiliation: Downey High School
+  - given-names: Ekaterina
+    family-names: Sarycheva
+    email: katesarycheva1@gmail.com
+    affiliation: The English School of Kyrenia
+  - given-names: Stephen
+    family-names: Yang
+    email: stephenyang0520@gmail.com
+    affiliation: Lexington High School
