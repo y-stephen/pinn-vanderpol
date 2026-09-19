@@ -1,5 +1,7 @@
 # Evaluating Physics-Informed Neural Network Variants for Nonlinear Dynamical Systems
 
+[![DOI](https://zenodo.org/badge/1372118206.svg)](https://doi.org/10.5281/zenodo.22847682)
+
 Code and results for *"Evaluating Physics-Informed Neural Network Variants for Nonlinear Dynamical Systems: A Multi-Seed Reliability Study of the Van der Pol Oscillator."*
 
 This project benchmarks seven Physics-Informed Neural Network (PINN) configurations, combining three network architectures (plain/Vanilla, SIREN, Fourier-feature) with three temporal-decomposition strategies (none, uniform windowing, adaptive windowing). We test them against a high-precision RK45 reference solution of the Van der Pol oscillator, across stiffness levels $\mu = 0.1$ to $50$. The three adaptively-windowed models are additionally repeated across three random seeds at $\mu \geq 10$ to test how reproducible the observed architectural differences are.
