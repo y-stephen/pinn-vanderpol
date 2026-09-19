@@ -70,7 +70,7 @@ The ground-truth solution used for error comparison is generated with SciPy's `s
 If you use this code or data, please cite the associated paper and, if applicable, the archived version of this repository on Zenodo:
 
 ```
-[citation details to be added]
+[citation details to be added after proceedings]
 ```
 
 ## Data and Code Availability
