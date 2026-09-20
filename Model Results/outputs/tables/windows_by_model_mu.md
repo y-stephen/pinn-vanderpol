@@ -4,7 +4,7 @@ Values are the median, min–max range across seeds for models with more than one 
 
 | model                         |   0.1 |   1.0 |   5.0 |   10.0 |   20.0 |   30.0 |   40.0 |   50.0 |
 |:------------------------------|------:|------:|------:|-------:|-------:|-------:|-------:|-------:|
-| Original PINN                 |     1 |     1 |     1 |      1 |    nan |    nan |    nan |    nan |
+| Standard PINN                 |     1 |     1 |     1 |      1 |    nan |    nan |    nan |    nan |
 | Window PINN                   |     4 |     4 |     7 |     11 |    nan |    nan |    nan |    nan |
 | SIREN PINN                    |     4 |     4 |     7 |     11 |    nan |    nan |    nan |    nan |
 | Fourier Feature PINN          |     4 |     4 |     7 |     11 |    nan |    nan |    nan |    nan |

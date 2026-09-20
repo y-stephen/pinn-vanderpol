@@ -1,6 +1,6 @@
 [
   {
-    "model": "Original PINN",
+    "model": "Standard PINN",
     "family": "Vanilla",
     "windowed": false,
     "adaptive": false,
@@ -19,7 +19,7 @@
     "windows": 1
   },
   {
-    "model": "Original PINN",
+    "model": "Standard PINN",
     "family": "Vanilla",
     "windowed": false,
     "adaptive": false,
@@ -38,7 +38,7 @@
     "windows": 1
   },
   {
-    "model": "Original PINN",
+    "model": "Standard PINN",
     "family": "Vanilla",
     "windowed": false,
     "adaptive": false,
@@ -57,7 +57,7 @@
     "windows": 1
   },
   {
-    "model": "Original PINN",
+    "model": "Standard PINN",
     "family": "Vanilla",
     "windowed": false,
     "adaptive": false,

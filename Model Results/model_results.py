@@ -21,7 +21,7 @@ def load_raw_data(path: str = DATA_PATH):
 RAW_DATA = load_raw_data()
 
 MODEL_ORDER = [
-    "Original PINN",
+    "Standard PINN",
     "Window PINN",
     "SIREN PINN",
     "Fourier Feature PINN",
@@ -31,7 +31,7 @@ MODEL_ORDER = [
 ]
  
 MODEL_STYLE = {
-    "Original PINN": dict(color="#7f7f7f", marker="o", linestyle="--"),
+    "Standard PINN": dict(color="#7f7f7f", marker="o", linestyle="--"),
     "Window PINN": dict(color="#1f77b4", marker="o", linestyle="--"),
     "SIREN PINN": dict(color="#2ca02c", marker="o", linestyle="--"),
     "Fourier Feature PINN": dict(color="#d62728", marker="o", linestyle="--"),
@@ -327,7 +327,7 @@ def make_all_plots(df: pd.DataFrame, agg: pd.DataFrame):
     plot_metric_vs_mu(agg, "windows", logy=False, filename="windows_vs_mu.png")
  
     families = {
-        "Vanilla": ["Original PINN", "Window PINN", "Adaptive Window PINN"],
+        "Vanilla": ["Standard PINN", "Window PINN", "Adaptive Window PINN"],
         "SIREN": ["SIREN PINN", "Adaptive SIREN PINN"],
         "Fourier": ["Fourier Feature PINN", "Adaptive Fourier Feature PINN"],
     }
