@@ -1,0 +1,5 @@
+config,mu=10,mu=20,mu=30
+Uniform windows + Basic training,"0.8 (0.72–0.95), 0/3 ok","2.1 (1.2–4.1), 0/3 ok","1.2 (0.91–1.3), 0/3 ok"
+Uniform windows + Extras training,"0.78 (0.0089–1), 1/3 ok","0.51 (0.22–0.68), 0/3 ok","0.59 (0.59–1), 0/3 ok"
+Adaptive windows + Basic training,"0.00025 (0.00024–0.0009), 3/3 ok","0.001 (0.00027–0.0014), 3/3 ok","0.06 (0.0084–0.066), 1/3 ok"
+Adaptive windows + Extras training,"0.00085 (0.00081–0.0011), 3/3 ok","0.0045 (0.001–0.0099), 3/3 ok","0.0039 (0.0036–0.004), 3/3 ok"

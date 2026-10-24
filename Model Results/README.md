@@ -1,6 +1,6 @@
 # Model Results
 
-This folder contains the combined results of every training run reported in the paper, along with the script used to analyze them.
+This folder contains the combined results of every training run reported in the paper, along with the script that analyzes them.
 
 ## Contents
 
@@ -14,40 +14,72 @@ model results/
 └── model_results.py
 ```
 
-- model_results.json:one record per (model, $\mu$, seed) training run.
-- model_results.py: loads `model_results.json`, and writes everything under `outputs/`: the summary tables and figures used in the paper (relative L2 error vs. $\mu$, accuracy-vs-training-cost, multi-seed median/range summaries, physics-residual comparison, etc.), and a CSV export.
+- **`model_results.json`:** one record per training run, identified by model, $\mu$ and seed. It holds 96 runs and is the source of every number and figure in the paper.
+- **`model_results.py`:** loads model_results.json and writes all tables, figures and a CSV export to outputs/.
 
-## model_results.json Description
+## Runs Included
 
-Each entry is a single run, identified by model, stiffness ($\mu$), and (for the adaptive models) seed:
+| Model | Seed 42 | Seeds 123 and 2026 | Runs |
+|---|---|---|---|
+| Standard PINN | $\mu = 0.1, 1, 5, 10$ | - | 4 |
+| Window PINN | $\mu = 0.1, 1, 5, 10, 20, 30$ | $\mu = 10, 20, 30$ | 12 |
+| SIREN PINN | $\mu = 0.1, 1, 5, 10$ | - | 4 |
+| Fourier Feature PINN | $\mu = 0.1, 1, 5, 10$ | - | 4 |
+| Adaptive Window PINN | $\mu = 0.1, 1, 5, 10, 20, 30, 40, 50$ | $\mu = 10, 20, 30, 40, 50$ | 18 |
+| Adaptive SIREN PINN | same as above | same as above | 18 |
+| Adaptive Fourier Feature PINN | same as above | same as above | 18 |
+| Ablation A: Uniform + Extras | $\mu = 10, 20, 30$ | $\mu = 10, 20, 30$ | 9 |
+| Ablation B: Adaptive + Basic | $\mu = 10, 20, 30$ | $\mu = 10, 20, 30$ | 9 |
+| **Total** | | | **96** |
+
+## Model Names
+
+```
+Standard PINN
+Window PINN
+SIREN PINN
+Fourier Feature PINN
+Adaptive Window PINN
+Adaptive SIREN PINN
+Adaptive Fourier Feature PINN
+Ablation A: Uniform + Extras
+Ablation B: Adaptive + Basic
+```
+
+## model_results.json Fields
 
 | Field | Description |
 |---|---|
-| `model` | Model name (e.g. "Adaptive Window PINN") |
-| `family` | Architecture family: Vanilla, SIREN, or Fourier |
+| `model` | Model name (see above) |
+| `family` | Architecture family: Vanilla (tanh), SIREN, or Fourier |
 | `windowed` | Whether temporal windowing is used |
-| `adaptive` | Whether adaptive (non-uniform) windowing and collocation resampling is used |
-| `seed` | Random seed for weight initialization / collocation sampling (42, 123, or 2026) |
+| `adaptive` | Whether window placement is adaptive (reference-informed). This is true for the three adaptive models and Ablation B. |
+| `seed` | Random seed controlling weight initialization and collocation sampling (42, 123 or 2026) |
 | `mu` | Van der Pol stiffness parameter |
-| `T_final` | Domain length (one period, detected per $\mu$) |
-| `windows` | Number of time windows used |
-| `MSE`, `RMSE`, `MAE`, `rel_L2`, `max_err` | Error metrics vs. the RK45 reference solution |
-| `final_train_loss` | Total training loss at the end of optimization |
-| `mean_phys_residual` | Mean physics-residual magnitude over the domain |
-| `train_time_s` | Wall-clock training time, in seconds |
-| `params` | Number of trainable network parameters |
-| `omega_0` | (SIREN models only) fixed SIREN frequency parameter |
-| `sigma`, `mapping_size` | (Fourier-feature models only) frequency scale and Fourier mapping size |
+| `T_final` | Domain length: 1.15 times the period detected at each $\mu$ |
+| `windows` | Number of time windows |
+| `MSE`, `RMSE`, `MAE`, `rel_L2`, `max_err` | Errors against the RK45 reference on 2,000 evenly spaced points. `rel_L2` is $\lVert x_\text{pred} - x_\text{ref}\rVert_2 / \lVert x_\text{ref}\rVert_2$, and `max_err` is the $L_\infty$ error. |
+| `final_train_loss` | The last recorded training loss. For windowed models, this is the final loss of the last window only. |
+| `mean_phys_residual` | Mean squared ODE residual over 2,000 random test points that weren't used in training |
+| `train_time_s` | Wall-clock training time in seconds (Colab T4; indicative only) |
+| `params` | Trainable parameters per window model |
+| `omega_0` | SIREN models only: SIREN frequency parameter (10.0) |
+| `warm_start` | SIREN PINN only: false, meaning each window is freshly initialized |
+| `sigma`, `mapping_size` | Fourier-feature models only: frequency scale (0.5) and mapping size (32) |
+| `ablation` | Ablation models only: true |
+| `placement`, `training` | Ablation models only: uniform or adaptive, and basic or extras |
 
-Rows for the single-seed sweep ($\mu \leq 10$ and all non-adaptive models) use seed = 42 only. Rows for the three adaptive models at $\mu = 10$-$50$ appear three times each, once per seed (42, 123, 2026), and are aggregated (median, min-max range) in the paper's multi-seed analysis.
-
-This file is the source for every number and figure reported in the paper.
 
 ## model_results.py
 
-Loads `model_results.json` into a table, then writes to `outputs/`:
-- outputs/pinn_results_tidy.csv: a tidy/long-format export of every run
-- outputs/tables/: the single-seed vs. multi-seed relative-L2-error comparison table (Table I in the paper)
-- outputs/plots/: relative L2 error vs. $\mu$ with median and min-max seed range for the adaptive models (`rel_L2_vs_mu.png`), relative L2 error vs. training time / accuracy-vs-cost (`accuracy_vs_cost.png`), and the physics-residual comparisons across seeds at high $\mu$
+Run it with:
+
+```bash
+python model_results.py
+```
+
+## model_results.py
+
+Loads `model_results.json` into a table, then writes to `outputs/`, that has comprehensive .csv and .md tables, and generated figures.
 
 Everything in `outputs/` is generated by this script.
