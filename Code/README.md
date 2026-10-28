@@ -48,4 +48,6 @@ The Fourier notebooks still contain the $\sigma$/mapping-size grid-search code (
 
 Each notebook defines the model, trains it with Adam followed by L-BFGS, computes an RK45 reference solution, and evaluates prediction and metrics.
 
-visualization.ipynb plots the RK45 reference solution, including its time series and phase portrait, for a selected $\mu$ value.
+Base PINN Architecture.ipynb contains the shared structure and classes for the base PINN models that the other model notebooks build on.
+
+Van der Pol Oscillator Visualizer Graph.ipynb plots the RK45 reference solution, including its time series and phase portrait, for a selected $\mu$ value.

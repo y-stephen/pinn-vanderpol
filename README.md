@@ -23,7 +23,7 @@ The three adaptive models and the uniform-window tanh model are repeated across 
 │   ├── Ablation A (Uniform + Extras)/
 │   ├── Ablation B (Adaptive + Basic)/
 │   ├── Base PINN Architecture.ipynb
-│   └── visualization.ipynb
+│   └── Van der Pol Oscillator Visualizer Graph.ipynb
 └── model results/
     ├── outputs/
     │   ├── plots/
@@ -88,9 +88,9 @@ The notebooks were developed and run on Google Colab (NVIDIA T4 GPU). They also 
 
 If you use this code or data, please cite the paper and the archived version of this repository on Zenodo:
 
-`
-[citation details to be added after proceedings]
-`
+```bibtex
+Citation TBA
+```
 
 ## Data and Code Availability
 
